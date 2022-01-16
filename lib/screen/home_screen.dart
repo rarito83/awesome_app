@@ -20,7 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Awesome App'),
         centerTitle: true,
-        actions: const [Icon(Icons.view_list)],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.view_list),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

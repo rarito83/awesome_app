@@ -10,7 +10,7 @@ class ApiService {
         headers: ({'Authorization': 'apiKey'}));
 
     if (response.statusCode == 200) {
-      print(response.body);
+      print("data : ${response.body}");
       return PexelResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed Load Data From Server!!");

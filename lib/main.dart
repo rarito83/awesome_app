@@ -1,5 +1,6 @@
 import 'package:awesome_app/screen/detail_screen.dart';
 import 'package:awesome_app/screen/home_screen.dart';
+import 'package:awesome_app/screen/second_screen.dart';
 import 'package:awesome_app/source/model/photo.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
+        SecondScreen.routeName: (context) => SecondScreen(),
         DetailScreen.routeName: (context) => DetailScreen(
             dataPhoto: ModalRoute.of(context)?.settings.arguments as Photo),
       },
