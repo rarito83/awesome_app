@@ -1,10 +1,13 @@
+import 'package:awesome_app/screen/binding/home_bindings.dart';
 import 'package:awesome_app/screen/detail_screen.dart';
 import 'package:awesome_app/screen/home_screen.dart';
 import 'package:awesome_app/screen/second_screen.dart';
-import 'package:awesome_app/source/model/photo.dart';
+import 'package:awesome_app/domain/entities/photo.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import 'common/constants.dart';
+import 'common/main_binding.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Awesome App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
@@ -21,13 +24,19 @@ class MyApp extends StatelessWidget {
         colorScheme: myColorScheme,
         scaffoldBackgroundColor: colorRichBlack,
       ),
-      initialRoute: HomeScreen.routeName,
-      routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
-        SecondScreen.routeName: (context) => SecondScreen(),
-        DetailScreen.routeName: (context) => DetailScreen(
-            dataPhoto: ModalRoute.of(context)?.settings.arguments as Photo),
-      },
+      initialBinding: MainBinding(),
+      // initialRoute: HomeScreen.routeName,
+      getPages: [
+        GetPage(name: '/home', page: () => HomeScreen(), binding: HomeBinding()),
+        GetPage(name: '/second', page: () => SecondScreen()),
+        GetPage(name: '/detail', page: () => DetailScreen()),
+      ],
+      // routes: {
+      //   HomeScreen.routeName: (context) => HomeScreen(),
+      //   SecondScreen.routeName: (context) => SecondScreen(),
+      //   DetailScreen.routeName: (context) => DetailScreen(
+      //       dataPhoto: ModalRoute.of(context)?.settings.arguments as Photo),
+      // },
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:awesome_app/common/constants.dart';
 import 'package:awesome_app/screen/detail_screen.dart';
-import 'package:awesome_app/source/model/photo.dart';
+import 'package:awesome_app/domain/entities/photo.dart';
 import 'package:flutter/material.dart';
 
 class CardPhoto extends StatelessWidget {

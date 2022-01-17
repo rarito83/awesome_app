@@ -1,4 +1,6 @@
-class Src {
+import 'package:equatable/equatable.dart';
+
+class Src extends Equatable {
   Src({
     required this.original,
     required this.large2X,
@@ -40,4 +42,8 @@ class Src {
         "landscape": landscape,
         "tiny": tiny,
       };
+
+  @override
+  List<Object?> get props =>
+      [original, large2X, large, medium, small, portrait, landscape, tiny];
 }

@@ -1,4 +1,4 @@
-import 'package:awesome_app/source/model/photo.dart';
+import 'package:awesome_app/domain/entities/photo.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {

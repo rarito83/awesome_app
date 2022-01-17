@@ -1,19 +1,8 @@
-import 'package:awesome_app/provider/pexel_provider.dart';
-import 'package:awesome_app/source/remote/api_service.dart';
+import 'package:awesome_app/screen/controller/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const routeName = 'homeScreen';
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final photoList = ChangeNotifierProvider<PexelProvider>(
-      create: (_) => PexelProvider(apiService: ApiService()));
-
+class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,30 +11,32 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.view_list),
             onPressed: () {},
+            icon: const Icon(Icons.view_list),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 2,
-                    childAspectRatio: 3 / 4,
-                    mainAxisSpacing: 2),
-                itemBuilder: (context, index) {
-                  return GridTile(
-                      child: InkWell(
-                    child: photoList,
-                    onTap: () {},
-                  ));
-                })
-          ],
-        ),
+
+      body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            childAspectRatio: 2/4,
+          ),
+          itemBuilder: (_, index) {
+            return GridTile(
+              child: InkWell(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                ),
+                onTap: () {
+                  Get.to('/detail', arguments: dataPhoto);
+                },
+              ),
+            );
+          }
       ),
     );
   }
 }
+

@@ -1,6 +1,7 @@
-import 'package:awesome_app/source/model/src.dart';
+import 'package:awesome_app/domain/entities/src.dart';
+import 'package:equatable/equatable.dart';
 
-class Photo {
+class Photo extends Equatable {
   Photo({
     required this.id,
     required this.width,
@@ -54,4 +55,19 @@ class Photo {
         "liked": liked,
         "alt": alt,
       };
+
+  @override
+  List<Object?> get props => [
+        id,
+        width,
+        height,
+        url,
+        photographer,
+        photographerUrl,
+        photographerId,
+        avgColor,
+        src,
+        liked,
+        alt,
+      ];
 }
